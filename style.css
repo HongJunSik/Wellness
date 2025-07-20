@@ -1,0 +1,472 @@
+/* --- CSS 스타일링 시작 --- */
+:root {
+    --primary-color: #8A2BE2; /* 보라색 계열 */
+    --primary-light: #f3e5ff;
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-color: #e0e0e0;
+    --bg-color: #f9f9f9;
+    --white-color: #ffffff;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    /* padding-top 제거 */
+}
+
+.business-hours {
+    display: flex; /* Flexbox 레이아웃 적용 */
+    justify-content: space-around; /* 공간을 균등하게 배분 */
+    align-items: flex-start; /* 상단 정렬 */
+    background-color: var(--primary-light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.contact-info,
+.hours-info {
+    flex-basis: 45%; /* 각 섹션이 차지할 기본 너비 */
+}
+
+.business-hours h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.contact-info p {
+    font-size: 1rem;
+    margin-bottom: 1rem; /* 병원 정보 줄 간격 추가 */
+}
+
+.contact-info p strong {
+    font-weight: 500;
+    margin-right: 0.5em;
+}
+
+.business-hours ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.business-hours li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0;
+}
+
+.business-hours li strong {
+    font-weight: 500;
+    margin-right: 1em;
+}
+
+.business-hours li span {
+    font-weight: 400;
+    color: var(--light-text-color);
+}
+
+.business-hours .lunch-time {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.business-hours .lunch-time strong,
+.business-hours .lunch-time span {
+    color: #d9534f; /* 점심시간 폰트 색상 변경 */
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* 헤더 */
+.header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+}
+
+/* 컨트롤 (검색, 필터) */
+.controls {
+    background: var(--white-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2.5rem;
+}
+
+.search-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 1rem; /* 왼쪽 패딩 조정 */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    padding-right: 3rem; /* 버튼 공간 확보 */
+}
+#search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.search-wrapper::before {
+    /* 기존 돋보기 아이콘 제거 */
+    content: none;
+}
+
+.search-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #6A1B9A; /* 약간 더 어두운 보라색 */
+}
+
+.filter-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center; /* 버튼 중앙 정렬 */
+}
+
+.filter-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: all 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+}
+
+/* 아코디언 리스트 */
+.procedure-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordion-item {
+    background: var(--white-color);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-item.hidden {
+    display: none;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+}
+
+.procedure-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.accordion-header h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.contact-info p a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-info p a:hover {
+    text-decoration: underline;
+}
+
+.desk-guide-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.2rem 0.4rem; /* 버튼 크기 조절 */
+    border-radius: 4px; /* 살짝 둥글게 */
+    cursor: pointer;
+    font-size: 0.8rem; /* 폰트 크기 조절 */
+    transition: background-color 0.3s;
+}
+
+.desk-guide-btn:hover {
+    background-color: #6A1B9A;
+}
+
+.accordion-header h3 small {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    font-weight: 400;
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background-color: #fafafa;
+    padding: 0 1.5rem; /* 세로 패딩 0, 가로 패딩 1.5rem으로 시작 */
+    border-top: 1px solid transparent; /* 테두리 색상 애니메이션을 위한 투명 테두리 */
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out, border-color 0.4s ease-in-out;
+}
+
+.accordion-content-inner {
+    /* 패딩을 부모 요소로 옮겼으므로 제거 */
+}
+
+.accordion-item.active .accordion-content {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-top-color: var(--border-color);
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-content ul {
+    list-style: none;
+}
+
+.accordion-content li {
+    display: flex;
+    margin-bottom: 0.8rem;
+}
+
+.accordion-content li strong {
+    flex-shrink: 0;
+    width: 80px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.detail-paragraph {
+    line-height: 1.7;
+    color: var(--text-color);
+    white-space: pre-wrap; /* 줄바꿈 및 공백 유지 */
+}
+
+/* 팝업(모달) 스타일 */
+.modal-overlay {
+    display: none; /* 초기에는 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--white-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    animation: slide-down 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--light-text-color);
+    transition: color 0.3s;
+}
+
+.modal-close-btn:hover {
+    color: var(--text-color);
+}
+
+.modal-body p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* --- CSS 스타일링 끝 --- */
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+}
+
+/* --- 반응형 디자인 (모바일) --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .business-hours {
+        flex-direction: column; /* 세로로 쌓기 */
+        align-items: stretch; /* 너비 꽉 채우기 */
+    }
+
+    .contact-info,
+    .hours-info {
+        flex-basis: 100%; /* 전체 너비 차지 */
+    }
+
+    .contact-info {
+        margin-bottom: 1.5rem;
+    }
+
+    .controls {
+        padding: 1rem;
+    }
+
+    .filter-nav {
+        gap: 0.3rem;
+    }
+
+    .filter-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .accordion-header {
+        padding: 1rem;
+        flex-direction: column; /* 제목과 아이콘 세로 정렬 */
+        align-items: flex-start;
+    }
+
+    .procedure-title {
+        width: 100%;
+        justify-content: space-between; /* 제목과 버튼 양 끝으로 */
+        margin-bottom: 0.5rem; /* 제목과 아이콘 사이 간격 */
+    }
+
+    .accordion-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .accordion-icon {
+        align-self: flex-end; /* 아이콘 오른쪽 끝으로 */
+        position: absolute; /* 위치 조정을 위해 */
+        right: 1rem;
+        top: 1rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .modal-body p {
+        font-size: 1rem;
+    }
+}

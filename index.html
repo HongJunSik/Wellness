@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피부과 시술 교육 가이드</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="business-hours">
+            <div class="contact-info">
+                <h4>병원 정보</h4>
+                <p><strong>주소:</strong> 서울 서초구 신반포로 219 8동 2층</p>
+                <p><strong>전화:</strong> 02.535.5977</p>
+                <p><strong>홈페이지:</strong> <a href="https://thewellnessclinic.co.kr/" target="_blank">더웰니스의원-바로가기</a></p>
+            </div>
+            <div class="hours-info">
+                <h4>영업시간 안내</h4>
+                <ul>
+                    <li><strong>월, 수, 목</strong><span>09:00 ~ 19:00</span></li>
+                    <li><strong>화, 금</strong><span>09:00 ~ 20:00</span></li>
+                    <li><strong>토요일</strong><span>09:00 ~ 15:00</span></li>
+                    <li><strong>일요일</strong><span>10:00 ~ 16:00</span></li>
+                    <li class="lunch-time"><strong>점심시간</strong><span>12:00 ~ 14:00</span></li>
+                </ul>
+            </div>
+        </div>
+        <header class="header">
+            <h1>피부과 시술 교육 가이드</h1>
+            <p>신규 입사자를 위한 시술 정보 및 관리법</p>
+        </header>
+
+        <main>
+            <section class="controls">
+                <div class="search-wrapper">
+                    <input type="search" id="search-input" placeholder="시술명을 입력하고 Enter를 누르세요">
+                    <button id="search-button" class="search-button">▶</button>
+                </div>
+                <nav class="filter-nav">
+                    <button class="filter-btn active" data-category="all">전체 시술</button>
+                    <button class="filter-btn" data-category="popular_Treatment">인기 시술</button>
+                    <button class="filter-btn" data-category="pigmentation_acne_redness">색소/여드름/홍조</button>
+                    <button class="filter-btn" data-category="pores_scars">모공/흉터</button>
+                    <button class="filter-btn" data-category="lifting">리프팅</button>
+                </nav>
+            </section>
+
+            <section class="procedure-list" id="procedure-list">
+                <!-- 자바스크립트로 시술 목록이 여기에 생성됩니다. -->
+            </section>
+        </main>
+    </div>
+
+    <!-- 데스크 안내 팝업(모달) -->
+    <div id="desk-guide-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+                <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            </div>
+            <div id="modal-body" class="modal-body">
+                <!-- 자바스크립트로 내용이 채워집니다. -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
