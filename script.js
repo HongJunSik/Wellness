@@ -146,9 +146,6 @@ const procedures = [
 
 document.addEventListener('DOMContentLoaded', () => {
     const procedureList = document.getElementById('procedure-list');
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
-    const filterButtons = document.querySelectorAll('.filter-btn');
     const modal = document.getElementById('desk-guide-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
@@ -158,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createProcedureList(filteredProcedures) {
         procedureList.innerHTML = ''; // 기존 목록 초기화
         if (filteredProcedures.length === 0) {
-            procedureList.innerHTML = '<p class="no-results">검색 결과가 없습니다.</p>';
+            procedureList.innerHTML = '<p class="no-results">표시할 시술이 없습니다.</p>';
             return;
         }
         filteredProcedures.forEach(proc => {
@@ -169,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let detailsHtml = `<p class="detail-paragraph">${proc.detail}</p>`;
             
-            // 'desk_guide'가 있을 때만 버튼을 생성
             const deskGuideButtonHtml = proc.desk_guide 
                 ? `<button class="desk-guide-btn" data-name="${proc.name}">데스크 안내</button>`
                 : '';
@@ -200,51 +196,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. 아코디언 기능
     function addAccordionListeners() {
         const accordionHeaders = document.querySelectorAll('.accordion-header');
-        const maxContentHeight = 400;
-        const verticalPadding = 48;
-
         accordionHeaders.forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
                 const content = item.querySelector('.accordion-content');
-                const contentInner = item.querySelector('.accordion-content-inner');
-
                 if (item.classList.contains('active')) {
                     content.style.maxHeight = null;
                     item.classList.remove('active');
                 } else {
                     item.classList.add('active');
-                    
-                    const scrollHeight = contentInner.scrollHeight;
-                    const totalRequiredHeight = scrollHeight + verticalPadding;
-                    
-                    if (totalRequiredHeight > maxContentHeight) {
-                        content.style.maxHeight = maxContentHeight + 'px';
-                        content.style.overflowY = 'auto';
-                    } else {
-                        content.style.maxHeight = totalRequiredHeight + 'px';
-                        content.style.overflowY = 'hidden';
-                    }
+                    content.style.maxHeight = content.scrollHeight + 'px';
                 }
             });
         });
     }
 
-    // 3. 검색 및 필터링 기능
-    function filterAndSearch() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
-
-        const filteredProcedures = procedures.filter(proc => {
-            const matchesCategory = activeCategory === 'all' || proc.category === activeCategory;
-            const matchesSearch = proc.name.toLowerCase().includes(searchTerm);
-            return matchesCategory && matchesSearch;
-        });
-        
-        createProcedureList(filteredProcedures);
-    }
-
-    // 4. 팝업 기능
+    // 3. 팝업 기능
     function showPopup(procedureName) {
         const procedure = procedures.find(p => p.name === procedureName);
         if (procedure && procedure.desk_guide) {
@@ -262,40 +229,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const deskGuideButtons = document.querySelectorAll('.desk-guide-btn');
         deskGuideButtons.forEach(button => {
             button.addEventListener('click', (event) => {
-                event.stopPropagation(); // 아코디언 열림 방지
+                event.stopPropagation();
                 const procedureName = event.target.dataset.name;
                 showPopup(procedureName);
             });
         });
     }
 
+    // 4. 초기 목록 생성
+    function initializeList() {
+        const popularProcedures = procedures.filter(proc => proc.category === 'popular_Treatment');
+        createProcedureList(popularProcedures);
+    }
+
     // 5. 이벤트 리스너 연결
-    searchButton.addEventListener('click', filterAndSearch);
-
-    searchInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            filterAndSearch();
-        }
-    });
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault(); // 버튼 클릭 시 화면이 맨 위로 이동하는 현상 방지
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            filterAndSearch();
-        });
-    });
-
     closeModalBtn.addEventListener('click', hidePopup);
     modal.addEventListener('click', (event) => {
-        if (event.target === modal) { // 오버레이 클릭 시 닫기
+        if (event.target === modal) {
             hidePopup();
         }
     });
 
-    // 초기 목록 생성
-    filterAndSearch();
+    initializeList();
 });
 
 // --- JavaScript 로직 끝 ---
