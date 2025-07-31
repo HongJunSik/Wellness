@@ -3,55 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>피부과 시술 교육 가이드</title>
+    <title>더웰니스 - 신규직원 교육자료</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="business-hours">
-            <div class="contact-info">
-                <h4>병원 정보</h4>
-                <p><strong>주소:</strong> 서울 서초구 신반포로 219 8동 2층</p>
-                <p><strong>전화:</strong> 02.535.5977</p>
-                <p><strong>홈페이지:</strong> <a href="https://thewellnessclinic.co.kr/" target="_blank">더웰니스의원-바로가기</a></p>
-            </div>
-            <div class="hours-info">
-                <h4>영업시간 안내</h4>
-                <ul>
-                    <li><strong>월, 수, 목</strong><span>09:00 ~ 19:00</span></li>
-                    <li><strong>화, 금</strong><span>09:00 ~ 20:00</span></li>
-                    <li><strong>토요일</strong><span>09:00 ~ 15:00</span></li>
-                    <li><strong>일요일</strong><span>10:00 ~ 16:00</span></li>
-                    <li class="lunch-time"><strong>점심시간</strong><span>12:00 ~ 14:00</span></li>
-                </ul>
-            </div>
-        </div>
         <header class="header">
-            <h1>피부과 시술 교육 가이드</h1>
-            <p>신규 입사자를 위한 시술 정보 및 관리법</p>
+            <h1 class="logo">
+                <a href="#">더웰니스 교육 가이드</a>
+            </h1>
         </header>
 
         <main>
-            <section class="controls">
-                <div class="search-wrapper">
-                    <input type="search" id="search-input" placeholder="시술명을 입력하고 Enter를 누르세요">
-                    <button id="search-button" class="search-button">▶</button>
+            <div class="info-section">
+                 <div class="business-hours">
+                    <div class="contact-info">
+                        <h4><i class="fa-solid fa-house-chimney-medical"></i> 병원 정보</h4>
+                        <p><strong>주소:</strong> 서울 서초구 신반포로 219 8동 2층</p>
+                        <p><strong>전화:</strong> 02.535.5977</p>
+                        <p><strong>홈페이지:</strong> <a href="https://thewellnessclinic.co.kr/" target="_blank">더웰니스의원-바로가기</a></p>
+                    </div>
+                    <div class="hours-info">
+                        <h4><i class="fa-regular fa-clock"></i> 영업시간 안내</h4>
+                        <ul>
+                            <li><strong>월, 수, 목</strong><span>09:00 ~ 19:00</span></li>
+                            <li><strong>화, 금</strong><span>09:00 ~ 20:00</span></li>
+                            <li><strong>토요일</strong><span>09:00 ~ 15:00</span></li>
+                            <li><strong>일요일</strong><span>10:00 ~ 16:00</span></li>
+                            <li class="lunch-time"><strong>점심시간</strong><span>12:00 ~ 14:00</span></li>
+                        </ul>
+                    </div>
                 </div>
-                <nav class="filter-nav">
-                    <button class="filter-btn active" data-category="all">전체 시술</button>
-                    <button class="filter-btn" data-category="popular_Treatment">인기 시술</button>
-                    <button class="filter-btn" data-category="pigmentation_acne_redness">색소/여드름/홍조</button>
-                    <button class="filter-btn" data-category="pores_scars">모공/흉터</button>
-                    <button class="filter-btn" data-category="lifting">리프팅</button>
-                </nav>
-            </section>
-
-            <section class="procedure-list" id="procedure-list">
-                <!-- 자바스크립트로 시술 목록이 여기에 생성됩니다. -->
-            </section>
+            </div>
+            <div class="main-content">
+                <div class="left-column">
+                    <section class="widget">
+                        <h4 class="widget-title"><i class="fa-solid fa-clipboard-list"></i> 데스크 주요 업무</h4>
+                        <ul class="task-list">
+                            <li><i class="fa-solid fa-circle-check"></i> 신규 환자 등록 및 정보 확인</li>
+                            <li><i class="fa-solid fa-circle-check"></i> 예약 확인 및 변경/취소 처리</li>
+                            <li><i class="fa-solid fa-circle-check"></i> 시술 후 주의사항 안내</li>
+                            <li><i class="fa-solid fa-circle-check"></i> 수납 및 영수증 발행</li>
+                            <li><i class="fa-solid fa-circle-check"></i> 전화 응대 및 문의 답변</li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="right-column">
+                    <section class="procedure-list" id="procedure-list">
+                        <!-- 자바스크립트로 시술 목록이 여기에 생성됩니다. -->
+                    </section>
+                </div>
+            </div>
         </main>
     </div>
 
